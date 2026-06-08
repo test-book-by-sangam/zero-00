@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Education Notice & Test App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL PREMIUM STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #07080d;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 35px;
+        }
+
+        /* --- RGB ANIMATION KEA LIYE --- */
+        @keyframes rgbGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- 1. LOGO SECTION (RGB GLOWING CIRCLE) --- */
+        .logo-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(45deg, #ff0055, #00ffcc, #9900ff, #ffcc00);
+            background-size: 300% 300%;
+            animation: rgbGlow 6s linear infinite;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+        }
+
+        .logo-circle {
+            width: 100%;
+            height: 100%;
+            background: #0f111a;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* --- 2. BASIC DETAILS BAR (Glassmorphic Accent) --- */
+        .details-bar {
+            width: 100%;
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 14px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .details-bar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffcc, #ff0055, #9900ff);
+            background-size: 300% 300%;
+            animation: rgbGlow 4s linear infinite;
+        }
+
+        .details-bar h2 {
+            font-weight: 500;
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+            color: #f0f0f5;
+            text-transform: uppercase;
+        }
+
+        /* --- 3. MULTIPLE LINKS GRID (8 COLUMNS LAYOUT) --- */
+        .links-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr); /* Exact 8 columns as per image */
+            gap: 14px;
+        }
+
+        /* PREMIUM LINK BOX STYLE */
+        .link-card {
+            background: #11131e;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 18px 8px;
+            text-align: center;
+            text-decoration: none;
+            color: #949aab;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        /* PREMIUM HOVER EFFECTS WITH NEON RGB COLORS BASED ON CATEGORY */
+        
+        /* Category 1: Notices (Neon Pink Glow) */
+        .cat-notice:hover {
+            color: #ffffff;
+            background: #16121f;
+            border-color: #ff0055;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+            text-shadow: 0 0 8px #ff0055;
+        }
+
+        /* Category 2: Mock Tests (Neon Cyan Glow) */
+        .cat-test:hover {
+            color: #ffffff;
+            background: #101921;
+            border-color: #00ffcc;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
+            text-shadow: 0 0 8px #00ffcc;
+        }
+
+        /* Category 3: Study Notes (Neon Purple Glow) */
+        .cat-notes:hover {
+            color: #ffffff;
+            background: #151122;
+            border-color: #9900ff;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 15px rgba(153, 0, 255, 0.6);
+            text-shadow: 0 0 8px #9900ff;
+        }
+
+        /* Category 4: Results & Updates (Neon Gold Glow) */
+        .cat-result:hover {
+            color: #ffffff;
+            background: #1c1812;
+            border-color: #ffcc00;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+            text-shadow: 0 0 8px #ffcc00;
+        }
+
+        /* --- RESPONSIVE LAYOUT FOR MOBILE SCREENS --- */
+        @media (max-width: 1400px) {
+            .links-grid { grid-template-columns: repeat(6, 1fr); }
+        }
+        @media (max-width: 1024px) {
+            .links-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .links-grid { grid-template-columns: repeat(3, 1fr); }
+            .logo-wrapper { width: 130px; height: 130px; }
+            .details-bar h2 { font-size: 1.1rem; }
+        }
+        @media (max-width: 480px) {
+            .links-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="logo-wrapper">
+            <div class="logo-circle">
+                ZERO
+            </div>
+        </div>
+
+        <div class="details-bar">
+            <h2>EDUCATION PORTAL • NOTICES & LIVE ONLINE TESTS</h2>
+        </div>
+
+        <div class="links-grid">
+            <!-- NOTICE BOXES - same tab mein khulenge (target="_blank" hataya) -->
+            <a href="https://test-book-by-sangam.github.io/zero-21/" class="link-card cat-notice"> बातचीत </a>
+            <a href="https://test-book-by-sangam.github.io/zero-22/" class="link-card cat-notice">उसने कहा था</a>
+            <a href="https://test-book-by-sangam.github.io/zero-23/" class="link-card cat-notice">संपूर्ण क्रांति</a>
+            <a href="https://test-book-by-sangam.github.io/zero-24/" class="link-card cat-notice">अर्धनारीश्वर</a>
+            <a href="https://test-book-by-sangam.github.io/zero-25/" class="link-card cat-notice">रोज</a>
+            <a href="https://test-book-by-sangam.github.io/zero-26/" class="link-card cat-notice">एक लेख और एक पत्र</a>
+            <a href="https://test-book-by-sangam.github.io/zero-27/" class="link-card cat-notice">ओ सदानीरा</a>
+            <a href="https://test-book-by-sangam.github.io/zero-28/" class="link-card cat-notice">सिपाही की माँ</a>
+            <a href="https://test-book-by-sangam.github.io/zero-29/" class="link-card cat-test">प्रगीत और समाज</a>
+            <a href="https://test-book-by-sangam.github.io/zero-30/" class="link-card cat-test">जूठन</a>
+            <a href="https://test-book-by-sangam.github.io/zero-31/" class="link-card cat-test">हँसते हुए मेरा अकेलापन</a>
+            <a href="https://test-book-by-sangam.github.io/zero-32/" class="link-card cat-test">तिरिछ</a>
+            <a href="https://test-book-by-sangam.github.io/zero-33/" class="link-card cat-test">शिक्षा</a>
+            <a href="https://test-book-by-sangam.github.io/zero-34/" class="link-card cat-test">कड़बक</a>
+            <a href="https://test-book-by-sangam.github.io/zero-35/" class="link-card cat-test">सूरदास के पद</a>
+            <a href="https://test-book-by-sangam.github.io/zero-36/" class="link-card cat-test">तुलसीदास के पद</a>
+            <a href="https://test-book-by-sangam.github.io/zero-37/" class="link-card cat-test">छप्पय</a>
+            <a href="https://test-book-by-sangam.github.io/zero-38/" class="link-card cat-test">कवित्त</a>
+            <a href="https://test-book-by-sangam.github.io/zero-39/" class="link-card cat-test">तुमुल कोलाहल कलह में</a>
+            <a href="https://test-book-by-sangam.github.io/zero-40/" class="link-card cat-test">पुत्र वियोग</a>
+            <a href="https://test-book-by-sangam.github.io/zero-41/" class="link-card cat-test">उषा</a>
+            <a href="https://test-book-by-sangam.github.io/zero-42/" class="link-card cat-test">जन-जन का चेहरा एक</a>
+            <a href="https://test-book-by-sangam.github.io/zero-43/" class="link-card cat-test">अधिनायक</a>
+            <a href="https://test-book-by-sangam.github.io/zero-44/" class="link-card cat-test">प्यारे नन्हें बेटे को</a>
+            <a href="https://test-book-by-sangam.github.io/zero-45/" class="link-card cat-notes">हार-जीत</a>
+            <a href="https://test-book-by-sangam.github.io/zero-46/" class="link-card cat-notes">गाँव का घर</a>
+           
+        </div>
+
+    </div>
+
+</body>
+</html>
